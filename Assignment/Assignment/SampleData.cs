@@ -8,7 +8,15 @@ namespace Assignment
     public class SampleData : ISampleData
     {
         // 1.
-        public IEnumerable<string> CsvRows { get => File.ReadAllLines("People.csv").Skip(1); }
+        public IEnumerable<string> CsvRows {
+            get => _CsvRows;
+            init 
+            { 
+                _CsvRows = value; 
+            }
+        }
+
+        private IEnumerable<string> _CsvRows = File.ReadAllLines("People.csv").Skip(1);
 
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()
